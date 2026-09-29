@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emniyet Elysium Taksi | Elazığ 7/24 Güvenli Ulaşım</title>
+    <meta name="description" content="Elazığ Emniyet Elysium Taksi. 7/24 hızlı, güvenli ve konforlu ulaşım hizmeti. Hemen arayın veya WhatsApp'tan taksi çağırın.">
+    
+    <!-- Google Fonts: Modern ve okunaklı 'Poppins' fontu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animasyon Kütüphanesi CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'taxi-yellow': '#FFCC00', /* Daha canlı ve parlak bir sarı */
+                        'taxi-dark': '#1e293b', /* Yazılar için koyu lacivert/gri */
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(255, 204, 0, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern aydınlık kaydırma çubuğu */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFCC00;
+            border-radius: 5px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Aydınlık Cam efekti (Light Glassmorphism) */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Yeni nesil kart tasarımı */
+        .modern-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1);
+            border-color: #FFCC00;
+        }
+
+        /* Dikkat çekici nabız (Pulse) animasyonu - Sarı gölge ile */
+        @keyframes pulse-glow-light {
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 204, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+
+        .btn-pulse {
+            animation: pulse-glow-light 2s infinite;
+        }
+
+        /* Dekoratif arka plan deseni */
+        .bg-pattern {
+            background-image: radial-gradient(#FFCC00 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-taxi-dark selection:text-taxi-yellow">
+
+    <!-- Üst Menü (Navbar) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 text-2xl font-extrabold text-taxi-dark group">
+                    <div class="w-10 h-10 bg-taxi-yellow rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-glow">
+                        <i class="fa-solid fa-taxi text-white"></i>
+                    </div>
+                    <span>Emniyet <span class="text-taxi-yellow">Elysium</span></span>
+                </a>
+                
+                <!-- Masaüstü Linkler -->
+                <div class="hidden md:flex space-x-8 items-center font-semibold">
+                    <a href="#hizmetler" class="text-slate-600 hover:text-taxi-yellow transition-colors duration-300">Hizmetlerimiz</a>
+                    <a href="#hakkimizda" class="text-slate-600 hover:text-taxi-yellow transition-colors duration-300">Hakkımızda</a>
+                    <a href="#iletisim" class="text-slate-600 hover:text-taxi-yellow transition-colors duration-300">İletişim</a>
+                    <a href="tel:+905052620405" class="bg-taxi-yellow text-taxi-dark px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-phone"></i> Ara
+                    </a>
+                </div>
+
+                <!-- Mobil Menü Butonu -->
+                <div class="md:hidden flex items-center">
+                    <a href="tel:+905052620405" class="bg-taxi-yellow text-taxi-dark p-3 rounded-full shadow-md">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Bölümü -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+        <!-- Dekoratif Arka Plan -->
+        <div class="absolute inset-0 bg-pattern"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-taxi-yellow/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-block px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100 text-sm font-semibold text-slate-600 mb-6" data-aos="fade-down">
+                    <i class="fa-solid fa-star text-taxi-yellow mr-1"></i> Elazığ'ın En Çok Tercih Edilen Taksi Durağı
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-taxi-dark mb-8 tracking-tight leading-tight" data-aos="fade-up" data-aos-delay="100">
+                    Güvenli Yolculuğun <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Yeni Adresi</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Emniyet Elysium Taksi ile 7/24 hızlı, konforlu ve güvenilir ulaşım. Sizi ve sevdiklerinizi gitmek istediğiniz yere zamanında ulaştırıyoruz.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-5" data-aos="zoom-in" data-aos-delay="300">
+                    <!-- Ana Arama Butonu -->
+                    <a href="tel:+905052620405" class="btn-pulse bg-taxi-yellow text-taxi-dark px-10 py-4 rounded-full text-xl font-bold flex items-center gap-3 hover:bg-yellow-400 transition-all w-full sm:w-auto justify-center shadow-glow">
+                        <i class="fa-solid fa-phone-volume text-2xl"></i>
+                        HEMEN ARA
+                    </a>
+                    
+                    <a href="https://wa.me/905052620405" class="bg-white text-slate-700 border border-gray-200 px-10 py-4 rounded-full text-xl font-bold flex items-center gap-3 hover:bg-gray-50 hover:border-green-400 transition-all w-full sm:w-auto justify-center shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-green-500 text-2xl"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler Bölümü -->
+    <section id="hizmetler" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-taxi-dark mb-4">Neden Bizi Seçmelisiniz?</h2>
+                <div class="h-1.5 w-24 bg-taxi-yellow mx-auto rounded-full"></div>
+                <p class="text-slate-500 mt-6 max-w-2xl mx-auto text-lg">Müşteri memnuniyeti odaklı çalışıyor, modern araçlarımızla üstün hizmet sunuyoruz.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Kart 1 -->
+                <div class="modern-card rounded-3xl p-10 text-center shadow-soft" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-yellow-50 rounded-2xl flex items-center justify-center mx-auto mb-8 text-taxi-yellow text-3xl transform rotate-3">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-taxi-dark mb-4">7/24 Kesintisiz</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Gecenin bir yarısı veya sabahın erken saatleri fark etmez. Elazığ'ın her noktasına günün her saati bir telefon uzağınızdayız.
+                    </p>
+                </div>
+
+                <!-- Kart 2 -->
+                <div class="modern-card rounded-3xl p-10 text-center shadow-soft relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-taxi-yellow"></div>
+                    <div class="w-20 h-20 bg-yellow-50 rounded-2xl flex items-center justify-center mx-auto mb-8 text-taxi-yellow text-3xl transform -rotate-3">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-taxi-dark mb-4">Güvenli & Konforlu</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Deneyimli şoför kadromuz ve düzenli bakımları yapılan araç filomuz ile sevdiklerinizi ve sizi güvenle taşıyoruz.
+                    </p>
+                </div>
+
+                <!-- Kart 3 -->
+                <div class="modern-card rounded-3xl p-10 text-center shadow-soft" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-yellow-50 rounded-2xl flex items-center justify-center mx-auto mb-8 text-taxi-yellow text-3xl transform rotate-3">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-taxi-dark mb-4">Hızlı Ulaşım</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Çağrınızı aldığımız an en yakın aracımızı konumunuza yönlendiriyoruz. Beklemeden, zaman kaybetmeden yola çıkın.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımızda ve Bölgeler -->
+    <section id="hakkimizda" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- Görsel Alanı (Aydınlık tema için uygun placeholder) -->
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-right">
+                    <div class="absolute inset-0 bg-taxi-yellow rounded-3xl transform translate-x-4 translate-y-4 opacity-20"></div>
+                    <img src="https://placehold.co/800x600/ffffff/FFCC00?text=Modern+Taksi+Gorseli" alt="Araçlarımız" class="relative rounded-3xl shadow-2xl border-4 border-white z-10 w-full object-cover">
+                    
+                    <!-- Yüzen İstatistik Kartı -->
+                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-taxi-dark">100%</p>
+                            <p class="text-slate-500 text-sm font-semibold">Müşteri Memnuniyeti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İçerik Alanı -->
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-taxi-dark mb-6 leading-tight">
+                        Elazığ'ın Her Köşesine <br>
+                        <span class="text-taxi-yellow">Hızlı Erişim</span>
+                    </h2>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                        Yılların verdiği tecrübe ile Emniyet Elysium Taksi olarak, şehrin ulaşım ağında önemli bir rol oynuyoruz. Önceliğimiz her zaman temiz araçlar, saygılı şoförler ve tam zamanında ulaşımdır.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <span class="font-semibold text-slate-700">Elysium AVM</span>
+                        </div>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <span class="font-semibold text-slate-700">Cumhuriyet Mah.</span>
+                        </div>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <span class="font-semibold text-slate-700">Havalimanı Transfer</span>
+                        </div>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mr-3">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <span class="font-semibold text-slate-700">Şehirler Arası</span>
+                        </div>
+                    </div>
+                    
+                    <a href="tel:+905052620405" class="inline-flex items-center bg-taxi-dark text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-colors shadow-lg">
+                        Taksi Çağır <i class="fa-solid fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aydınlık Footer -->
+    <footer id="iletisim" class="bg-white pt-16 pb-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+                
+                <!-- Marka -->
+                <div>
+                    <a href="#" class="flex items-center gap-3 text-2xl font-extrabold text-taxi-dark mb-4">
+                        <div class="w-10 h-10 bg-taxi-yellow rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-taxi text-white"></i>
+                        </div>
+                        <span>Emniyet <span class="text-taxi-yellow">Elysium</span></span>
+                    </a>
+                    <p class="text-slate-500 mb-6">Elazığ'da güvenli, konforlu ve 7/24 kesintisiz taksi hizmetinin doğru adresi.</p>
+                </div>
+                
+                <!-- Hızlı Linkler -->
+                <div>
+                    <h4 class="text-lg font-bold text-taxi-dark mb-4">Hızlı Menü</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-500 hover:text-taxi-yellow transition-colors">Ana Sayfa</a></li>
+                        <li><a href="#hizmetler" class="text-slate-500 hover:text-taxi-yellow transition-colors">Hizmetlerimiz</a></li>
+                        <li><a href="#hakkimizda" class="text-slate-500 hover:text-taxi-yellow transition-colors">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                
+                <!-- İletişim -->
+                <div>
+                    <h4 class="text-lg font-bold text-taxi-dark mb-4">İletişim</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot text-taxi-yellow mt-1 mr-3 text-lg"></i>
+                            <span class="text-slate-600">Malatya Caddesi Mustafa Uygur Bulvarı,<br>Elazığ</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone text-taxi-yellow mr-3 text-lg"></i>
+                            <a href="tel:+905052620405" class="text-slate-600 hover:text-taxi-dark font-semibold text-lg transition-colors">0505 262 04 05</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>© 2026 Emniyet Elysium Taksi. Tüm hakları saklıdır.</p>
+                <p class="mt-2 md:mt-0">Tasarım & Geliştirme: Profesyonel Hizmetler</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sabit WhatsApp Butonu -->
+    <a href="https://wa.me/905052620405?text=Merhaba,%20taksi%20çağırmak%20istiyorum.%20Konumum:" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300 z-50 hover:bg-[#20ba56]" style="box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5);">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript Tanımlamaları -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Animasyonlarını Başlat
+        AOS.init({
+            once: true, // Animasyonlar sadece ilk kaydırmada çalışsın
+            offset: 50, // Animasyonun tetiklenmesi için pixel mesafesi
+            duration: 800, // Animasyon süresi
+            easing: 'ease-out-cubic',
+        });
+
+        // Navbar Scroll Efekti (Cam efekti tetikleyicisi)
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                // Aşağı kaydırıldığında
+                navbar.classList.add('glass-nav', 'shadow-sm');
+                navbar.classList.remove('bg-white', 'py-5');
+                navbar.classList.add('py-3');
+            } else {
+                // En üstteyken
+                navbar.classList.remove('glass-nav', 'shadow-sm', 'py-3');
+                navbar.classList.add('bg-white', 'py-5');
+            }
+        });
+    </script>
+</body>
+</html>
