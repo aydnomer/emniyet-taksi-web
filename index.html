@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emniyet Taksi | Elazığ 7/24 Taksi Hizmeti</title>
-<!-- SEO ve Arama Motoru Ayarları -->
 <meta name="description" content="Elazığ Emniyet Taksi & Elysium Taksi. 7/24 kesintisiz, güvenli ve konforlu ulaşım. Şehir içi, havalimanı ve şehirler arası transfer. Taksi çağır: 0505 262 04 05">
 <meta name="keywords" content="elazığ taksi, emniyet taksi, elysium taksi, elysum taksi, elazığ taksi durağı, elazığ havalimanı transfer, elazığ en yakın taksi, elazığ acil taksi">
 <meta name="theme-color" content="#111827">
@@ -13,9 +12,13 @@
 <meta property="og:description" content="Bir telefon kadar yakınız. Elazığ'da 7/24 güvenli ve hızlı taksi.">
 <meta property="og:locale" content="tr_TR">
 
-<!-- Mobil Uygulama (PWA) Etiketleri -->
+<!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="ikon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Emniyet Taksi">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚕%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,20 +27,23 @@
 <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Poppins','system-ui','sans-serif']}}}}</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TaxiService","name":"Emniyet Taksi","alternateName":"Elysium Taksi","telephone":"+905052620405","areaServed":"Elazığ","openingHours":"Mo-Su 00:00-23:59","address":{"@type":"PostalAddress","streetAddress":"Malatya Caddesi Mustafa Uygur Bulvarı, Kuvayi Milliye Caddesi, İmam Efendi Bulvarı, Saray, Bosna Caddesi","addressLocality":"Elazığ Merkez/Elazığ","postalCode":"23270","addressCountry":"TR"}}
+{"@context":"https://schema.org","@type":"TaxiService","name":"Emniyet Taksi","alternateName":"Elysium Taksi","telephone":"+905052620405","areaServed":"Elazığ","openingHours":"Mo-Su 00:00-23:59","address":{"@type":"PostalAddress","streetAddress":"Malatya Caddesi","addressLocality":"Elazığ Merkez","addressRegion":"Elazığ","postalCode":"23270","addressCountry":"TR"},"geo":{"@type":"GeoCoordinates","latitude":38.668606,"longitude":39.1843219}}
 </script>
 <style>
   :focus-visible{outline:3px solid #facc15;outline-offset:3px;border-radius:8px}
   .pulse-ring{animation:ring 2s infinite}
   @keyframes ring{0%{box-shadow:0 0 0 0 rgba(250,204,21,.6)}100%{box-shadow:0 0 0 18px rgba(250,204,21,0)}}
-  .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 1s ease-in-out, transform 5s ease-out;}
-  .slide.on{opacity:1;transform:scale(1);}
-  @media (prefers-reduced-motion:reduce){.slide,.slide.on{transform:none;transition:opacity .01s}}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out}
+  .slide.on{opacity:1}
+  .slide img{position:absolute;inset:0;width:100%;height:100%}
+  .slide .bg{object-fit:cover;filter:blur(18px) brightness(.55);transform:scale(1.15)}
+  .slide .fg{object-fit:contain}
   details summary::-webkit-details-marker{display:none}
   details[open] .chev{transform:rotate(180deg)}
-  @media (prefers-reduced-motion:reduce){.pulse-ring{animation:none}html{scroll-behavior:auto}}
-  .bounce-icon { animation: bounce 2s infinite; }
-  @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
+  .bounce-icon{animation:bounce 2s infinite}
+  @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}60%{transform:translateY(-3px)}}
+  @media (min-width:768px){.bounce-icon{animation:none}}
+  @media (prefers-reduced-motion:reduce){.slide,.slide.on{transform:none;transition:opacity .01s}.pulse-ring,.bounce-icon{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body class="bg-white text-gray-900 antialiased font-sans overflow-x-hidden pb-20 md:pb-0">
@@ -48,34 +54,22 @@
 <nav class="w-full bg-gray-900/95 backdrop-blur shadow-lg fixed top-0 z-50" aria-label="Ana menü">
   <div class="mx-auto px-4 sm:px-6 max-w-7xl flex justify-between items-center h-20">
     <a href="#" class="flex items-center gap-3 group">
-      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-yellow-400 text-gray-900 flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-105 transition-transform duration-300">
-        <i class="fas fa-taxi"></i>
-      </div>
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-yellow-400 text-gray-900 flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-105 transition-transform duration-300"><i class="fas fa-taxi"></i></div>
       <div class="flex flex-col justify-center">
-        <span class="text-lg sm:text-xl md:text-2xl font-extrabold text-white leading-tight tracking-wide">
-          Emniyet <span class="text-yellow-400">Taksi</span>
-        </span>
-        <span class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-400 leading-tight tracking-widest uppercase mt-0.5">
-          Elysium Taksi
-        </span>
+        <span class="text-lg sm:text-xl md:text-2xl font-extrabold text-white leading-tight tracking-wide">Emniyet <span class="text-yellow-400">Taksi</span></span>
+        <span class="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-400 leading-tight tracking-widest uppercase mt-0.5">Elysium Taksi</span>
       </div>
     </a>
-    
     <div class="hidden md:flex items-center gap-8 font-medium text-gray-300 text-[15px]">
       <a href="#hizmetler" class="hover:text-yellow-400 transition">Hizmetler</a>
       <a href="#surucu-yorum" class="hover:text-yellow-400 transition">Araç & Yorumlar</a>
       <a href="#sss" class="hover:text-yellow-400 transition">SSS</a>
       <a href="#iletisim" class="hover:text-yellow-400 transition">İletişim</a>
     </div>
-    
     <div class="flex items-center gap-3 sm:gap-5">
-      <div class="hidden md:flex items-center gap-2 text-white font-bold tracking-widest">
-        <i class="fas fa-phone-alt text-yellow-400 text-sm"></i>
-        <span>0505 262 04 05</span>
-      </div>
-      <a href="tel:+905052620405" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 px-3 sm:px-6 py-2.5 rounded-full font-bold text-sm transition shadow-lg shadow-yellow-400/20 flex items-center justify-center gap-2 bounce-icon md:bounce-none">
-        <i class="fas fa-phone-alt"></i>
-        <span class="hidden md:inline">Hemen Ara</span>
+      <div class="hidden md:flex items-center gap-2 text-white font-bold tracking-widest"><i class="fas fa-phone-alt text-yellow-400 text-sm"></i><span>0505 262 04 05</span></div>
+      <a href="tel:+905052620405" aria-label="Hemen ara" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 px-3 sm:px-6 py-2.5 rounded-full font-bold text-sm transition shadow-lg shadow-yellow-400/20 flex items-center justify-center gap-2 bounce-icon">
+        <i class="fas fa-phone-alt"></i><span class="hidden md:inline">Hemen Ara</span>
       </a>
       <button id="menuBtn" class="md:hidden text-white text-2xl w-10 h-10 ml-1 flex items-center justify-center" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobMenu"><i class="fas fa-bars"></i></button>
     </div>
@@ -90,67 +84,57 @@
 
 <main id="ana">
 
-<!-- HERO ALANI -->
-<header class="relative pt-28 pb-16 md:pt-42 md:pb-28 bg-gray-900 overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
+<!-- HERO -->
+<header class="relative pt-24 pb-16 md:pt-40 md:pb-28 bg-gray-900 overflow-hidden md:min-h-[90vh] flex items-center">
   <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 80% 50%,#facc15 0,transparent 50%)"></div>
-  
-  <div class="mx-auto px-4 sm:px-6 max-w-7xl w-full relative z-10">
-    <div class="flex flex-row items-center gap-4 sm:gap-8 lg:gap-20">
-      
-      <!-- Sol: Araba Fotoğrafları -->
-      <div class="w-1/3 md:w-1/2 relative h-[150px] sm:h-[250px] md:h-[450px] lg:h-[550px] rounded-3xl md:rounded-[2rem] overflow-hidden shadow-2xl border-2 md:border-4 border-gray-800 bg-gray-800 shrink-0">
-        <div id="heroDefault" class="absolute inset-0 flex flex-col items-center justify-center text-gray-600">
-            <i class="fas fa-image text-3xl md:text-6xl mb-2 md:mb-4 opacity-50"></i>
-        </div>
+  <div class="mx-auto px-5 sm:px-6 max-w-7xl w-full relative z-10">
+    <div class="flex flex-col md:flex-row items-center gap-7 md:gap-12 lg:gap-20">
+
+      <!-- Fotoğraf: mobilde tam genişlik -->
+      <div class="w-full md:w-1/2 shrink-0">
+      <div class="w-full relative h-[250px] sm:h-[360px] md:h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl border-2 md:border-4 border-gray-800 bg-gray-800 shrink-0">
+        <div id="heroDefault" class="absolute inset-0 flex items-center justify-center text-gray-600"><i class="fas fa-image text-5xl opacity-50"></i></div>
         <div id="heroPhoto" class="absolute inset-0 hidden">
           <div id="slides" class="absolute inset-0 bg-gray-900"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
         </div>
-        <div class="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-white/90 backdrop-blur px-2 md:px-4 py-1 md:py-2 rounded-lg font-black text-gray-900 border border-gray-200 shadow-xl tracking-wider text-[10px] md:text-lg z-20">
-            23 T 0405
+        <div class="absolute bottom-3 right-3 md:bottom-4 md:right-4 bg-white/90 backdrop-blur px-3 md:px-4 py-1 md:py-2 rounded-lg font-black text-gray-900 border border-gray-200 shadow-xl tracking-wider text-xs md:text-lg z-20">23 T 0405</div>
+      </div>
+
+        <!-- İşletmeci kartı: fotoğrafın hemen altında, sağda (üst üste binmez) -->
+        <div class="flex justify-end mt-3 md:mt-4">
+          <div class="inline-flex items-center gap-2.5 md:gap-3 bg-yellow-400 text-gray-900 rounded-xl pl-2 pr-4 md:pl-2.5 md:pr-5 py-1.5 md:py-2 shadow-lg shadow-black/30">
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gray-900 text-yellow-400 flex items-center justify-center text-sm md:text-lg shrink-0"><i class="fas fa-user-tie"></i></div>
+            <div class="leading-tight text-left">
+              <p class="text-[10px] md:text-xs font-semibold text-gray-800">İşletmeci</p>
+              <p class="text-base md:text-xl font-extrabold tracking-tight whitespace-nowrap">Andaç Durmuş</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Sağ: Yazılar ve Tasarım Hiyerarşisi -->
-      <div class="w-2/3 md:w-1/2 text-left">
-        
-        <!-- 1. ANDAÇ DURMUŞ GÜVENCESİYLE (7/24 Yazısının Üstünde Dev ve Şık Başlık) -->
-        <h2 class="text-base sm:text-lg md:text-2xl font-extrabold text-yellow-400 tracking-wide mb-2 flex items-center gap-2 drop-shadow-md">
-          <i class="fas fa-award text-yellow-400"></i> Andaç Durmuş Güvencesiyle
-        </h2>
-
-        <!-- 2. 7/24 HİZMETİNİZDEYİZ ROZETİ -->
-        <div class="inline-flex items-center gap-1.5 md:gap-2 bg-gray-800 border border-gray-700 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-sm text-gray-300 mb-3 shadow-md">
-          <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400 animate-pulse"></span> <span class="whitespace-nowrap">7/24 Hizmetinizdeyiz</span>
+      <!-- Yazılar -->
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-gray-800 border border-gray-700 px-4 py-1.5 rounded-full text-xs md:text-sm text-gray-300 mb-4 shadow-md">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span><span class="whitespace-nowrap">7/24 Hizmetinizdeyiz</span>
         </div>
-        
-        <!-- 3. ANA BAŞLIK -->
-        <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-5 tracking-tight">
-          Güvenli Yolculuğun <br> <span class="text-yellow-400">Yeni Adresi</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-5 tracking-tight">
+          Güvenli Yolculuğun <span class="text-yellow-400 block">Yeni Adresi</span>
         </h1>
-        
-        <p class="text-xs sm:text-base md:text-xl text-gray-300 mb-5 md:mb-8 max-w-xl leading-relaxed">
-          Emniyet Elysium Taksi ile hızlı ve konforlu ulaşım. Aramanız yeterli.
-        </p>
-        
-        <div class="flex flex-col xl:flex-row gap-3 md:gap-4 justify-start">
-          <a href="tel:+905052620405" class="pulse-ring inline-flex items-center justify-center gap-2 md:gap-3 bg-yellow-400 hover:bg-yellow-300 text-gray-900 px-4 md:px-8 py-3 md:py-4 rounded-full font-extrabold text-sm md:text-lg transition shadow-xl shadow-yellow-400/20">
-            <i class="fas fa-phone-volume"></i> Taksi Çağır
-          </a>
-          <button id="locBtnTop" class="inline-flex items-center justify-center gap-2 md:gap-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-4 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg transition backdrop-blur-sm">
-            <i class="fas fa-location-crosshairs text-green-400"></i> Konum Gönder
-          </button>
+        <p class="text-sm sm:text-base md:text-xl text-gray-300 mb-6 md:mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">Emniyet Elysium Taksi ile hızlı ve konforlu ulaşım. Aramanız yeterli.</p>
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
+          <a href="tel:+905052620405" class="pulse-ring inline-flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-gray-900 px-8 py-3.5 md:py-4 rounded-full font-extrabold text-base md:text-lg transition shadow-xl shadow-yellow-400/20"><i class="fas fa-phone-volume"></i> Taksi Çağır</a>
+          <button id="locBtnTop" class="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-3.5 md:py-4 rounded-full font-bold text-base md:text-lg transition backdrop-blur-sm"><i class="fas fa-location-crosshairs text-green-400"></i> Konum Gönder</button>
         </div>
+        <p id="locMsgTop" class="text-xs md:text-sm text-gray-400 mt-3 min-h-[1.25rem]" aria-live="polite"></p>
 
-        <!-- 4. İŞLETMECİ BİLGİSİ (Konum Gönder Butonunun Altında) -->
-        <div class="mt-4 md:mt-5 inline-flex items-center gap-2 bg-gray-800/80 border border-gray-700/60 px-4 py-2 rounded-xl text-gray-300 text-xs md:text-sm font-medium shadow-sm">
-          <i class="fas fa-user-tie text-yellow-400"></i>
-          <span>İşletmeci: <strong class="text-white font-semibold">Andaç Durmuş</strong></span>
+
+        <!-- Uygulama ekle -->
+        <div class="mt-3">
+          <button id="installBtn" class="hidden text-sm font-semibold text-gray-300 underline underline-offset-4"><i class="fas fa-download mr-1"></i> Uygulamayı telefona ekle</button>
+          <p id="iosHint" class="hidden text-xs text-gray-400"><i class="fas fa-arrow-up-from-bracket mr-1"></i> iPhone'da: Paylaş simgesi → "Ana Ekrana Ekle"</p>
         </div>
-
-        <p id="locMsgTop" class="text-[10px] md:text-sm text-gray-400 mt-2 min-h-[1.25rem]"></p>
       </div>
-
     </div>
   </div>
 </header>
@@ -158,10 +142,10 @@
 <!-- GÜVEN ŞERİDİ -->
 <section class="bg-white relative z-20 -mt-8 md:-mt-12 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-xl border border-gray-100">
   <div class="py-6 md:py-10 px-2 md:px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center divide-x divide-gray-100">
-    <div><i class="fas fa-clock text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base text-gray-900">7/24 Açık</p><p class="hidden md:block text-sm text-gray-500 mt-1">Gece gündüz hazırız</p></div>
-    <div><i class="fas fa-user-shield text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base text-gray-900">VIP Deneyim</p><p class="hidden md:block text-sm text-gray-500 mt-1">Saygılı ve güvenilir</p></div>
-    <div><i class="fas fa-car-side text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base text-gray-900">Lüks Araçlar</p><p class="hidden md:block text-sm text-gray-500 mt-1">Düzenli bakımlı</p></div>
-    <div><i class="fas fa-plane text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base text-gray-900">Havalimanı</p><p class="hidden md:block text-sm text-gray-500 mt-1">Transfer hizmeti</p></div>
+    <div><i class="fas fa-clock text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base">7/24 Açık</p><p class="hidden md:block text-sm text-gray-500 mt-1">Gece gündüz hazırız</p></div>
+    <div><i class="fas fa-user-shield text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base">VIP Deneyim</p><p class="hidden md:block text-sm text-gray-500 mt-1">Saygılı ve güvenilir</p></div>
+    <div><i class="fas fa-car-side text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base">Lüks Araçlar</p><p class="hidden md:block text-sm text-gray-500 mt-1">Düzenli bakımlı</p></div>
+    <div><i class="fas fa-plane text-2xl md:text-3xl text-yellow-500 mb-2 md:mb-3"></i><p class="font-bold text-sm md:text-base">Havalimanı</p><p class="hidden md:block text-sm text-gray-500 mt-1">Transfer hizmeti</p></div>
   </div>
 </section>
 
@@ -169,35 +153,35 @@
 <section class="py-16 md:py-24 bg-gray-50" id="hizmetler">
   <div class="mx-auto px-6 max-w-7xl">
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900">Hizmetlerimiz</h2>
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Hizmetlerimiz</h2>
       <p class="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">Şehir içinden şehirler arasına, ihtiyacınız olan yolculuk için buradayız.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       <article class="bg-white p-6 md:p-8 rounded-3xl border border-gray-200 hover:border-yellow-400 hover:shadow-2xl transition-all duration-300">
         <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-yellow-400 text-xl md:text-2xl mb-5 md:mb-6 shadow-md"><i class="fas fa-city"></i></div>
-        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">Şehir İçi Ulaşım</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Şehir İçi Ulaşım</h3>
         <p class="text-sm md:text-base text-gray-600 leading-relaxed">İş, alışveriş, hastane ya da eve dönüş. Elazığ içinde her adrese anında ulaşıyoruz.</p>
       </article>
       <article class="bg-white p-6 md:p-8 rounded-3xl border border-gray-200 hover:border-yellow-400 hover:shadow-2xl transition-all duration-300">
         <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-yellow-400 text-xl md:text-2xl mb-5 md:mb-6 shadow-md"><i class="fas fa-plane-departure"></i></div>
-        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">Havalimanı Transferi</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Havalimanı Transferi</h3>
         <p class="text-sm md:text-base text-gray-600 leading-relaxed">Uçuş saatinize göre zamanında alım. Bagajınızla birlikte stresten uzak bir yolculuk.</p>
       </article>
       <article class="bg-white p-6 md:p-8 rounded-3xl border border-gray-200 hover:border-yellow-400 hover:shadow-2xl transition-all duration-300">
         <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-yellow-400 text-xl md:text-2xl mb-5 md:mb-6 shadow-md"><i class="fas fa-road"></i></div>
-        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">Şehirler Arası</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Şehirler Arası</h3>
         <p class="text-sm md:text-base text-gray-600 leading-relaxed">Uzun yolda konforlu ve güvenli yolculuk. Size özel fiyat avantajları için hemen arayın.</p>
       </article>
       <article class="bg-white p-6 md:p-8 rounded-3xl border border-gray-200 hover:border-yellow-400 hover:shadow-2xl transition-all duration-300">
         <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-yellow-400 text-xl md:text-2xl mb-5 md:mb-6 shadow-md"><i class="fas fa-moon"></i></div>
-        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">Gece Taksi</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Gece Taksi</h3>
         <p class="text-sm md:text-base text-gray-600 leading-relaxed">Gecenin herhangi bir saatinde yolda kalmayın. Bir telefon uzağınızdayız.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ARAÇ & GOOGLE YORUMLARI ENTEGRASYON ALANI -->
+<!-- ARAÇ & YORUMLAR -->
 <section class="py-16 md:py-24 bg-gray-900 text-white" id="surucu-yorum">
   <div class="mx-auto px-6 max-w-7xl">
     <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -207,73 +191,61 @@
           <p class="text-gray-400 text-base md:text-lg leading-relaxed">Emniyet Taksi olarak, size sadece bir yerden bir yere gitmeyi değil, konforlu bir seyahat deneyimini garanti ediyoruz.</p>
         </div>
         <div class="bg-gray-800 border border-gray-700 p-6 md:p-8 rounded-3xl space-y-6">
-            <div class="flex items-center gap-4 border-b border-gray-700 pb-6">
-                <div class="w-12 h-12 md:w-14 md:h-14 bg-yellow-400 text-gray-900 rounded-full flex items-center justify-center text-xl md:text-2xl font-black">
-                    <i class="fas fa-id-card"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold text-white">Resmi Ticari Araç</h3>
-                    <p class="text-gray-400 mt-1 text-sm md:text-base">Plaka: <span class="text-yellow-400 font-black tracking-widest text-base md:text-lg ml-1">23 T 0405</span></p>
-                </div>
+          <div class="flex items-center gap-4 border-b border-gray-700 pb-6">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-yellow-400 text-gray-900 rounded-full flex items-center justify-center text-xl md:text-2xl font-black"><i class="fas fa-id-card"></i></div>
+            <div>
+              <h3 class="text-lg md:text-xl font-bold text-white">Resmi Ticari Araç</h3>
+              <p class="text-gray-400 mt-1 text-sm md:text-base">Plaka: <span class="text-yellow-400 font-black tracking-widest text-base md:text-lg ml-1">23 T 0405</span></p>
             </div>
-            <ul class="space-y-3 md:space-y-4 text-sm md:text-base text-gray-300">
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> Her yolculuk öncesi temizlenen iç mekan</li>
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> İklimlendirmeli (Klimalı) ferah yolculuk</li>
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> Aileye uygun, güvenilir şoför kadrosu</li>
-            </ul>
+          </div>
+          <ul class="space-y-3 md:space-y-4 text-sm md:text-base text-gray-300">
+            <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> Her yolculuk öncesi temizlenen iç mekan</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> İklimlendirmeli (Klimalı) ferah yolculuk</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-green-400 text-lg md:text-xl"></i> Aileye uygun, güvenilir şoför kadrosu</li>
+          </ul>
         </div>
       </div>
       <div class="space-y-6 relative">
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-2xl relative z-10 border-t-4 border-blue-500">
-            <div class="flex flex-wrap items-center justify-between mb-6 border-b border-gray-100 pb-5 gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="w-8 h-8 md:w-10 md:h-10">
-                    <div>
-                        <h3 class="text-gray-900 font-bold text-base md:text-lg leading-tight mb-1">Emniyet Elysium Taksi</h3>
-                        <div class="flex items-center gap-2 text-yellow-500 text-xs md:text-sm">
-                            <span class="text-gray-900 font-black text-sm md:text-base">5,0</span>
-                            <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <span class="text-gray-500 font-medium ml-1">43 Yorum</span>
-                        </div>
-                    </div>
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-2xl relative z-10 border-t-4 border-blue-500 text-gray-900">
+          <div class="flex flex-wrap items-center justify-between mb-6 border-b border-gray-100 pb-5 gap-4">
+            <div class="flex items-center gap-3">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="w-8 h-8 md:w-10 md:h-10">
+              <div>
+                <h3 class="font-bold text-base md:text-lg leading-tight mb-1">Emniyet Elysium Taksi</h3>
+                <div class="flex items-center gap-2 text-yellow-500 text-xs md:text-sm">
+                  <span class="text-gray-900 font-black text-sm md:text-base">5,0</span>
+                  <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <span class="text-gray-500 font-medium ml-1">43 Yorum</span>
                 </div>
+              </div>
             </div>
-            <div class="space-y-4 mb-6 md:mb-8">
-                <div class="bg-gray-50 p-4 md:p-5 rounded-2xl border border-gray-100 hover:border-blue-200 transition">
-                    <div class="flex items-center gap-3 mb-2 md:mb-3">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-green-700 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">M</div>
-                        <div>
-                            <div class="text-xs md:text-sm font-bold text-gray-900">Muhammed Çolak</div>
-                            <div class="flex items-center gap-2 mt-0.5">
-                              <div class="flex gap-1 text-yellow-500 text-[8px] md:text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                              <span class="text-[10px] md:text-xs text-gray-500">Yeni</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">"Mükkemel hizmet"</p>
+          </div>
+          <div class="space-y-4 mb-6 md:mb-8">
+            <div class="bg-gray-50 p-4 md:p-5 rounded-2xl border border-gray-100 hover:border-blue-200 transition">
+              <div class="flex items-center gap-3 mb-2 md:mb-3">
+                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-700 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">M</div>
+                <div>
+                  <div class="text-xs md:text-sm font-bold">Muhammed Çolak</div>
+                  <div class="flex items-center gap-2 mt-0.5"><div class="flex gap-1 text-yellow-500 text-[8px] md:text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="text-[10px] md:text-xs text-gray-500">Yeni</span></div>
                 </div>
-                <div class="bg-gray-50 p-4 md:p-5 rounded-2xl border border-gray-100 hover:border-blue-200 transition">
-                    <div class="flex items-center gap-3 mb-2 md:mb-3">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">F</div>
-                        <div>
-                            <div class="text-xs md:text-sm font-bold text-gray-900">Fatih Genç</div>
-                            <div class="flex items-center gap-2 mt-0.5">
-                              <div class="flex gap-1 text-yellow-500 text-[8px] md:text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                              <span class="text-[10px] md:text-xs text-gray-500">Yeni</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">"Kalite konfor güvenlik hep..."</p>
+              </div>
+              <p class="text-gray-600 text-xs md:text-sm leading-relaxed">"Mükemmel hizmet"</p>
+            </div>
+            <div class="bg-gray-50 p-4 md:p-5 rounded-2xl border border-gray-100 hover:border-blue-200 transition">
+              <div class="flex items-center gap-3 mb-2 md:mb-3">
+                <div class="w-8 h-8 md:w-10 md:h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">F</div>
+                <div>
+                  <div class="text-xs md:text-sm font-bold">Fatih Genç</div>
+                  <div class="flex items-center gap-2 mt-0.5"><div class="flex gap-1 text-yellow-500 text-[8px] md:text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="text-[10px] md:text-xs text-gray-500">Yeni</span></div>
                 </div>
+              </div>
+              <p class="text-gray-600 text-xs md:text-sm leading-relaxed">"Kalite konfor güvenlik hep..."</p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <a href="https://www.google.com/maps/search/?api=1&query=Emniyet+Elysium+Taksi+Elazığ" target="_blank" rel="noopener" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 md:py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 text-sm md:text-base">
-                    <i class="fab fa-google"></i> Google'da İncele
-                </a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Emniyet+Elysium+Taksi+Elazığ" target="_blank" rel="noopener" class="flex-1 bg-white hover:bg-gray-50 text-gray-900 text-center py-3 md:py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 border-2 border-gray-200 text-sm md:text-base">
-                    <i class="fas fa-plus"></i> Yorum Ekle
-                </a>
-            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <a href="https://www.google.com/maps/search/?api=1&query=Emniyet+Elysium+Taksi+Elazığ" target="_blank" rel="noopener" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 md:py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 text-sm md:text-base"><i class="fab fa-google"></i> Google'da İncele</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Emniyet+Elysium+Taksi+Elazığ" target="_blank" rel="noopener" class="flex-1 bg-white hover:bg-gray-50 text-gray-900 text-center py-3 md:py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 border-2 border-gray-200 text-sm md:text-base"><i class="fas fa-plus"></i> Yorum Ekle</a>
+          </div>
         </div>
       </div>
     </div>
@@ -283,18 +255,18 @@
 <!-- SSS -->
 <section class="py-16 md:py-20 bg-gray-50" id="sss">
   <div class="mx-auto px-6 max-w-3xl">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-8 md:mb-10 text-center text-gray-900">Sık sorulan sorular</h2>
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-8 md:mb-10 text-center">Sık sorulan sorular</h2>
     <div class="space-y-4">
       <details class="group bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
-        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-gray-900 text-base md:text-lg">Taksi ne kadar sürede gelir?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
+        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-base md:text-lg">Taksi ne kadar sürede gelir?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
         <p class="text-gray-600 mt-3 md:mt-4 text-sm md:text-base leading-relaxed">Çağrınızı aldığımızda konumunuza en hızlı ulaşabilecek güzergahtan yola çıkıyoruz. Tahmini süreyi telefonda size net olarak bildiriyoruz.</p>
       </details>
       <details class="group bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
-        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-gray-900 text-base md:text-lg">Gece de hizmet veriyor musunuz?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
+        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-base md:text-lg">Gece de hizmet veriyor musunuz?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
         <p class="text-gray-600 mt-3 md:mt-4 text-sm md:text-base leading-relaxed">Evet, Emniyet Taksi olarak 7 gün 24 saat, resmi tatiller dahil hizmet vermekteyiz.</p>
       </details>
       <details class="group bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
-        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-gray-900 text-base md:text-lg">Konumumu nasıl gönderebilirim?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
+        <summary class="flex justify-between items-center cursor-pointer font-bold list-none text-base md:text-lg">Konumumu nasıl gönderebilirim?<i class="fas fa-chevron-down chev text-yellow-500 transition"></i></summary>
         <p class="text-gray-600 mt-3 md:mt-4 text-sm md:text-base leading-relaxed">Sayfanın üstündeki "Konum Gönder" butonuna tıklayarak veya WhatsApp butonundan bize yazarak harita konumunuzu anında iletebilirsiniz.</p>
       </details>
     </div>
@@ -303,7 +275,7 @@
 
 </main>
 
-<!-- İLETİŞİM & TAKSİ DURAĞI FOOTER -->
+<!-- İLETİŞİM -->
 <footer class="bg-gray-900 text-white pt-16 md:pt-20 pb-8" id="iletisim">
   <div class="mx-auto px-6 max-w-7xl">
     <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10 md:mb-12">Bize ulaşın</h2>
@@ -324,40 +296,29 @@
         </div>
       </div>
       <div class="rounded-3xl overflow-hidden border-4 border-gray-800 min-h-[250px] md:min-h-[350px]">
-        <iframe title="Emniyet Taksi harita konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full min-h-[250px] md:min-h-[350px]"
-          src="https://www.google.com/maps?q=38.668606,39.1843219&output=embed"></iframe>
+        <iframe title="Emniyet Taksi harita konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full min-h-[250px] md:min-h-[350px]" src="https://www.google.com/maps?q=38.668606,39.1843219&output=embed"></iframe>
       </div>
     </div>
-    
     <div class="border-t border-gray-800 mt-12 md:mt-16 pt-6 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
       <p>© 2026 Emniyet Elysium Taksi. Tüm hakları saklıdır.</p>
-      <p class="text-gray-400 text-base md:text-lg">
-        <span class="text-yellow-400 font-bold tracking-wider mr-1">Andaç Durmuş</span> güvencesiyle...
-      </p>
+      <p class="text-gray-400 text-base md:text-lg"><span class="text-yellow-400 font-bold tracking-wider mr-1">Andaç Durmuş</span> güvencesiyle...</p>
     </div>
   </div>
 </footer>
 
-<!-- WEB TASARIM & GELİŞTİRİCİ İMZASI -->
+<!-- GELİŞTİRİCİ İMZASI -->
 <div class="bg-[#0b1120] border-t border-gray-800/50 py-5 pb-24 md:pb-5">
   <div class="mx-auto px-6 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-500">
-    <div class="flex items-center gap-2">
-       <i class="fas fa-code text-yellow-400/80 text-base"></i> 
-       <span>Web Tasarım & Geliştirme: <span class="text-gray-300 font-medium tracking-wide">Ömer Faruk Aydın</span></span>
-    </div>
+    <div class="flex items-center gap-2"><i class="fas fa-code text-yellow-400/80 text-base"></i><span>Web Tasarım & Geliştirme: <span class="text-gray-300 font-medium tracking-wide">Ömer Faruk Aydın</span></span></div>
     <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-       <a href="https://wa.me/905307652147?text=Merhaba,%20web%20tasar%C4%B1m%20hizmetiniz%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener" class="hover:text-white transition-colors duration-300 flex items-center gap-2">
-         <i class="fab fa-whatsapp text-green-500 text-base"></i> 0530 765 21 47
-       </a>
-       <span class="hidden sm:inline text-gray-700">|</span>
-       <a href="mailto:aydnomrfrk@gmail.com" class="hover:text-white transition-colors duration-300 flex items-center gap-2">
-         <i class="fas fa-envelope text-blue-400 text-base"></i> aydnomrfrk@gmail.com
-       </a>
+      <a href="https://wa.me/905307652147?text=Merhaba,%20web%20tasar%C4%B1m%20hizmetiniz%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener" class="hover:text-white transition-colors duration-300 flex items-center gap-2"><i class="fab fa-whatsapp text-green-500 text-base"></i> 0530 765 21 47</a>
+      <span class="hidden sm:inline text-gray-700">|</span>
+      <a href="mailto:aydnomrfrk@gmail.com" class="hover:text-white transition-colors duration-300 flex items-center gap-2"><i class="fas fa-envelope text-blue-400 text-base"></i> aydnomrfrk@gmail.com</a>
     </div>
   </div>
 </div>
 
-<!-- MOBİL SABİT ÇAĞRI ÇUBUĞU -->
+<!-- MOBİL SABİT ÇUBUK -->
 <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-gray-900 border-t border-gray-700 p-3 flex gap-3 shadow-[0_-10px_20px_rgba(0,0,0,0.3)]">
   <a href="tel:+905052620405" class="flex-1 flex items-center justify-center gap-2 bg-yellow-400 text-gray-900 rounded-xl py-3.5 font-extrabold text-base sm:text-lg"><i class="fas fa-phone-volume"></i> Ara</a>
   <a href="https://wa.me/905052620405?text=Merhaba,%20taksi%20lazım." target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white rounded-xl py-3.5 font-extrabold text-base sm:text-lg"><i class="fab fa-whatsapp text-xl sm:text-2xl"></i> WhatsApp</a>
@@ -369,9 +330,10 @@
 
 <script>
   const WA = '905052620405';
-  
+
+  // Fotoğraf slaytı (klasörde olan dosyalar)
   (function () {
-    const FILES = ['taksi1.jpg','taksi2.jpg','taksi3.jpg','taksi4.jpg','taksi5.jpg','taksi6.jpg'];
+    const FILES = ['taksi1.jpg','taksi3.jpg','taksi4.jpg','taksi5.jpg','taksi6.jpg'];
     const INTERVAL = 3500;
     const loaded = new Array(FILES.length).fill(null);
     let left = FILES.length;
@@ -384,17 +346,16 @@
     function done() {
       if (--left) return;
       const list = loaded.filter(Boolean);
-      if (!list.length) return; 
-      
+      if (!list.length) return;
       const box = document.getElementById('slides');
       const els = list.map(src => {
-        const el = document.createElement('img');
-        el.src = src; el.alt = 'Emniyet Taksi Araç'; el.className = 'slide';
+        const el = document.createElement('div');
+        el.className = 'slide';
+        el.innerHTML = `<img class="bg" src="${src}" alt="" aria-hidden="true"><img class="fg" src="${src}" alt="Emniyet Taksi Araç">`;
         box.appendChild(el); return el;
       });
       document.getElementById('heroPhoto').classList.remove('hidden');
       document.getElementById('heroDefault').classList.add('hidden');
-      
       let cur = 0;
       requestAnimationFrame(() => els[0].classList.add('on'));
       if (els.length < 2) return;
@@ -407,6 +368,7 @@
     }
   })();
 
+  // Mobil menü
   const mb = document.getElementById('menuBtn'), mm = document.getElementById('mobMenu');
   mb.addEventListener('click', () => {
     const open = mm.classList.toggle('hidden') === false;
@@ -414,22 +376,48 @@
   });
   mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mm.classList.add('hidden'); mb.setAttribute('aria-expanded', false); }));
 
+  // Konum gönder
   const locBtnTop = document.getElementById('locBtnTop');
-  if(locBtnTop) {
-      locBtnTop.addEventListener('click', () => {
-        const locMsgTop = document.getElementById('locMsgTop');
-        if (!navigator.geolocation) { locMsgTop.textContent = 'Tarayıcınız konum özelliğini desteklemiyor. Lütfen bizi arayın.'; return; }
-        locMsgTop.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Konumunuz alınıyor...';
-        navigator.geolocation.getCurrentPosition(p => {
-          const link = `https://www.google.com/maps?q=${p.coords.latitude},${p.coords.longitude}`;
-          const msg = `Merhaba, Emniyet Taksi lazım. Konumum: ${link}`;
-          locMsgTop.textContent = 'Konum alındı, WhatsApp açılıyor.';
-          window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-          setTimeout(() => { locMsgTop.textContent = ''; }, 3000);
-        }, () => {
-          locMsgTop.textContent = 'Konum alınamadı. Lütfen cihazınızın konum iznini açın veya bizi arayın.';
-        }, { enableHighAccuracy: true, timeout: 10000 });
-      });
+  if (locBtnTop) {
+    locBtnTop.addEventListener('click', () => {
+      const msgEl = document.getElementById('locMsgTop');
+      if (!navigator.geolocation) { msgEl.textContent = 'Tarayıcınız konum özelliğini desteklemiyor. Lütfen bizi arayın.'; return; }
+      msgEl.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Konumunuz alınıyor...';
+      navigator.geolocation.getCurrentPosition(p => {
+        const link = `https://www.google.com/maps?q=${p.coords.latitude},${p.coords.longitude}`;
+        const msg = `Merhaba, Emniyet Taksi lazım. Konumum: ${link}`;
+        msgEl.textContent = 'Konum alındı, WhatsApp açılıyor.';
+        window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+        setTimeout(() => { msgEl.textContent = ''; }, 3000);
+      }, () => {
+        msgEl.textContent = 'Konum alınamadı. Lütfen cihazınızın konum iznini açın veya bizi arayın.';
+      }, { enableHighAccuracy: true, timeout: 10000 });
+    });
+  }
+
+  // PWA: service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
+
+  // PWA: uygulamayı yükle butonu
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferredPrompt = e;
+    if (!isStandalone) installBtn.classList.remove('hidden');
+  });
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null; installBtn.classList.add('hidden');
+  });
+  window.addEventListener('appinstalled', () => installBtn.classList.add('hidden'));
+  // iPhone/iPad için açıklama
+  if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !isStandalone) {
+    document.getElementById('iosHint').classList.remove('hidden');
   }
 </script>
 </body>
