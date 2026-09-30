@@ -1,0 +1,17 @@
+{
+  "name": "Emniyet Elysium Taksi",
+  "short_name": "Emniyet Taksi",
+  "description": "Andaç Kaptan Yönetiminde Elazığ 7/24 Güvenilir Taksi Hizmeti",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#facc15",
+  "icons": [
+    {
+      "src": "ikon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
