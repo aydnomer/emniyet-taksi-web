@@ -1,67 +1,58 @@
-const CACHE_NAME = 'emniyet-taksi-v2';
+const CACHE_NAME = 'emniyet-taksi-v3';
 
-// 1. Aşama: Uygulama kurulurken telefona indirilecek sabit dosyalar
+// Yollar GÖRELİ (./) olmalı: site /emniyet-taksi-web/ alt klasöründe çalışıyor
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/ikon.png',
-  '/taksi1.jpg',
-  '/taksi3.jpg',
-  '/taksi4.jpg',
-  '/taksi5.jpg',
-  '/taksi6.jpg'
+  './',
+  './index.html',
+  './manifest.json',
+  './ikon.png',
+  './taksi1.jpg',
+  './taksi3.jpg',
+  './taksi4.jpg',
+  './taksi5.jpg',
+  './taksi6.jpg'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache =>
+      // Tek bir dosya bulunamasa bile kurulum bozulmasın
+      Promise.all(urlsToCache.map(u => cache.add(u).catch(() => {})))
+    )
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then(names =>
+      Promise.all(names.filter(n => n !== CACHE_NAME).map(n => caches.delete(n)))
+    )
   );
   self.clients.claim();
 });
 
-// 2. Aşama: Dinamik Önbellekleme (İnternetsiz çalışmayı sağlayan asıl kısım)
+// Önce internet, olmazsa önbellek: site güncellenince müşteri hep yenisini görür
 self.addEventListener('fetch', event => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+  if (url.hostname.endsWith('google.com')) return; // harita iframe'i önbelleğe alınmaz
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Dosya telefonda kayıtlıysa interneti kullanmadan direkt onu aç
-        if (response) {
-          return response;
+    fetch(req)
+      .then(res => {
+        if (res && (res.ok || res.type === 'opaque')) {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then(c => c.put(req, copy));
         }
-        
-        // Kayıtlı değilse internetten çek ve bir dahaki sefere internetsiz açmak için telefona kaydet
-        return fetch(event.request).then(networkResponse => {
-          // FontAwesome (ikonlar) ve Tailwind (renkler/tasarım) gibi dış bağlantıları da çevrimdışı için kaydet
-          if (event.request.url.startsWith('http')) {
-            const responseToCache = networkResponse.clone();
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          }
-          return networkResponse;
-        }).catch(() => {
-          // İnternet yoksa ve dosya bulunamazsa sessizce bekle
-          console.log('Çevrimdışı modda kaynak bulunamadı:', event.request.url);
-        });
+        return res;
       })
+      .catch(() =>
+        caches.match(req).then(m =>
+          m || (req.mode === 'navigate' ? caches.match('./index.html') : Response.error())
+        )
+      )
   );
 });
