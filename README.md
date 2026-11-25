@@ -1,8 +1,6 @@
 <div align="center">
 
-# 🚕 Emniyet Taksi · Elazığ
-
-**Website and installable mobile app (PWA) for a 24/7 taxi service in Elazığ, Türkiye**
+# 🚕 Emniyet Taksi · Website + PWA
 
 [![Live](https://img.shields.io/badge/Live-emniyettaksi.com.tr-facc15?style=for-the-badge&logo=googlechrome&logoColor=black)](https://emniyettaksi.com.tr)
 ![PWA](https://img.shields.io/badge/PWA-installable-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
@@ -11,100 +9,36 @@
 
 </div>
 
----
+A production website and installable mobile web app I built alone for a taxi business in Elazığ. It runs on the client's own domain and lets customers call a taxi, send their GPS location and install the site on their phone like an app.
 
-## About the project
+**Built:** 2026, solo · **Live:** [emniyettaksi.com.tr](https://emniyettaksi.com.tr)
 
-Emniyet Taksi is a 24/7 taxi service in Elazığ offering city rides, airport transfers, intercity trips and night service.
+## What I did
 
-I designed, built and deployed the site end to end. It runs on the business's own domain, and customers use it to call a taxi, share their location and install the site on their phone like an app.
+- **Designed and built the site from scratch**, mobile-first, with Tailwind CSS and vanilla JavaScript.
+- **Turned it into a Progressive Web App**: manifest, maskable icons, a custom install button for Android and install guidance for iPhone.
+- **Wrote a service worker** with a network-first caching strategy, so users always get the latest version online and the site still opens offline.
+- **Used the Geolocation API** to turn the user's GPS position into a Google Maps link and open WhatsApp with it, so customers can share their location in one tap.
+- **Handled local SEO**: Schema.org structured data, meta and Open Graph tags, and Google Search Console setup.
+- **Deployed it** on GitHub Pages with a custom domain and HTTPS.
 
-| | |
-|---|---|
-| **Role** | Design, development, deployment, domain and SEO setup (solo) |
-| **Type** | Business website + Progressive Web App |
-| **Status** | Live in production at [emniyettaksi.com.tr](https://emniyettaksi.com.tr) |
+## Engineering highlights
 
-## Goals
+- **Zero build step, no framework:** one HTML file plus a small service worker, so it loads fast and is easy to maintain.
+- **Cache versioning:** old caches are cleared on every release, and third-party content (maps) is never cached.
+- **Accessibility:** skip link, keyboard focus styles, ARIA labels, live status messages and support for `prefers-reduced-motion`.
+- **Resilient UI:** images are preloaded before the slideshow starts, so a missing file never breaks the page; animations pause when the tab is hidden.
+- **Clear error handling** when location permission is denied or not supported.
 
-1. **Get a customer to a taxi in as few taps as possible.** Every screen has a visible "call" action.
-2. **Remove the "where are you?" phone call** by letting customers send their exact location.
-3. **Be found on Google** for searches like "Elazığ taksi" and "Elazığ havalimanı transfer".
-4. **Feel like an app** on the phone without needing an App Store release.
-5. **Build trust** with a professional, modern look.
+## Skills used
 
-## What was built
+`HTML5` `Tailwind CSS` `JavaScript` `PWA` `Service Workers` `Cache API` `Geolocation API` `Responsive design` `Accessibility` `SEO` `Schema.org` `GitHub Pages`
 
-### Customer features
+## What I learned
 
-- **One-tap call and WhatsApp.** Call buttons in the header, hero, contact section and a sticky bottom bar on mobile; a floating WhatsApp button on desktop with a pre-filled message.
-- **Send my location.** One button reads the phone's GPS through the Geolocation API, turns it into a Google Maps link and opens WhatsApp with the message ready to send. Clear messages are shown if location permission is denied or unsupported.
-- **Install as an app.** A custom "Add to phone" button uses the browser's install prompt on Android and Chrome; on iPhone it shows "Share → Add to Home Screen" instructions instead. The buttons hide themselves once the app is installed.
-- **Works on a weak connection.** A service worker keeps a copy of the page and photos, so the site still opens with poor or no signal.
-- **Services section:** city rides, airport transfer, intercity trips and night taxi.
-- **Trust section:** vehicle standards and a Google reviews card with links to read and write reviews.
-- **FAQ** with expandable answers (arrival time, night service, how to send your location).
-- **Contact and map:** phone, WhatsApp and an embedded Google Map with a "view on map" link.
-- **Photo slideshow** of the vehicles in the hero, with a blurred background fill so photos of any shape look good.
-
-### SEO and discoverability
-
-- Custom domain (`emniyettaksi.com.tr`) connected to GitHub Pages over HTTPS.
-- **Schema.org `TaxiService` structured data** with business details, location, service area and opening hours, so Google can show the business as a local result.
-- Title, meta description and keywords written for local searches.
-- **Open Graph tags** for a clean preview when the link is shared on WhatsApp and social media.
-- **Google Search Console** ownership verified for indexing and search monitoring.
-
-### Accessibility
-
-- "Skip to content" link and visible keyboard focus outlines.
-- `aria-label`, `aria-expanded` and `aria-controls` on the menu and icon-only buttons.
-- `aria-live` status messages for the location feature.
-- Respects **`prefers-reduced-motion`**: slideshow, pulse and bounce animations are turned off for users who ask for less motion.
-- Semantic HTML (`nav`, `main`, `section`, `footer`, `details/summary`) and alt text on images.
-
-### Performance
-
-- **No framework and no build step:** the whole site is one HTML file plus a small service worker.
-- Slideshow images are preloaded in the background and only shown once loaded; a missing image never breaks the page.
-- The slideshow pauses while the tab is hidden.
-- The map iframe is lazy-loaded.
-- Font preconnect to cut font loading time.
-
-## Technical decisions
-
-| Decision | Why |
-|---|---|
-| **Static site, no backend** | The business needs calls and messages, not accounts or forms. A static site is fast, free to host and has nothing to break or patch. |
-| **PWA instead of a native app** | Customers get a home screen icon and an app-like full screen experience without an App Store or Play Store release. |
-| **Network-first caching** in the service worker | Customers always get the latest version when online and fall back to the cached copy when offline. Old caches are cleared on every new version, and Google Maps is never cached. |
-| **WhatsApp + GPS for location** | Every customer already has WhatsApp. Sending a Maps link there needs no extra app, account or server. |
-| **Tailwind CSS** | Fast, consistent, mobile-first styling directly in the markup. |
-| **GitHub Pages + custom domain** | Free HTTPS hosting; every push to `main` goes live automatically. |
-
-## Tech stack
-
-**Frontend:** HTML5 · Tailwind CSS · Vanilla JavaScript · Font Awesome · Google Fonts (Poppins)
-**PWA:** Web App Manifest · Service Worker (Cache API) · maskable icons · install prompt
-**Browser APIs:** Geolocation API · Service Worker API · `matchMedia` (display mode, reduced motion)
-**SEO:** Schema.org JSON-LD · Open Graph · Google Search Console
-**Hosting:** GitHub Pages · custom domain (CNAME) · HTTPS
-
-## Project structure
-
-```
-emniyet-taksi-web/
-├── index.html              # page, Tailwind styles, structured data and scripts
-├── sw.js                   # service worker: network-first cache, offline fallback
-├── manifest.json           # PWA manifest: name, colors, icons, standalone mode
-├── icon-192.png            # app icons (incl. maskable 512 px for Android)
-├── icon-512.png
-├── icon-512-maskable.png
-├── ikon.png                # Apple touch icon
-├── taksi*.jpg              # vehicle photos for the hero slideshow
-├── google…html             # Google Search Console verification
-└── CNAME                   # custom domain for GitHub Pages
-```
+- Building for real users on real phones, where speed and simplicity matter more than features.
+- How service workers and caching strategies work, and how to ship updates without users getting stuck on an old version.
+- Taking a project from idea to a live product on a custom domain.
 
 ## Run locally
 
@@ -114,16 +48,8 @@ cd emniyet-taksi-web
 python -m http.server 8000
 ```
 
-Then open http://localhost:8000. Use a local server rather than opening the file directly, so the service worker can register.
-
-## Deployment
-
-Pushing to `main` publishes the site with GitHub Pages. The `CNAME` file points it to `emniyettaksi.com.tr`. When the cached files change, bump `CACHE_NAME` in `sw.js` so returning visitors get the new version.
+Open http://localhost:8000 (a local server is needed for the service worker).
 
 ---
 
-<div align="center">
-
 Designed and developed by **[Ömer Faruk Aydın](https://github.com/aydnomer)**
-
-</div>
