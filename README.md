@@ -15,13 +15,12 @@
 
 ## About the project
 
-Emniyet Taksi (also known as Elysium Taksi) is a licensed taxi service in Elazığ that works around the clock: city rides, airport transfers, intercity trips and night service.
+Emniyet Taksi is a 24/7 taxi service in Elazığ offering city rides, airport transfers, intercity trips and night service.
 
-I designed, built and deployed the site end to end as a freelance client project. It runs on the business's own domain, and customers use it to call a taxi, share their location and install the site on their phone like an app.
+I designed, built and deployed the site end to end. It runs on the business's own domain, and customers use it to call a taxi, share their location and install the site on their phone like an app.
 
 | | |
 |---|---|
-| **Client** | Emniyet Elysium Taksi, Elazığ |
 | **Role** | Design, development, deployment, domain and SEO setup (solo) |
 | **Type** | Business website + Progressive Web App |
 | **Status** | Live in production at [emniyettaksi.com.tr](https://emniyettaksi.com.tr) |
@@ -32,7 +31,7 @@ I designed, built and deployed the site end to end as a freelance client project
 2. **Remove the "where are you?" phone call** by letting customers send their exact location.
 3. **Be found on Google** for searches like "Elazığ taksi" and "Elazığ havalimanı transfer".
 4. **Feel like an app** on the phone without needing an App Store release.
-5. **Build trust** with a professional look, the official vehicle details and real Google reviews.
+5. **Build trust** with a professional, modern look.
 
 ## What was built
 
@@ -43,15 +42,15 @@ I designed, built and deployed the site end to end as a freelance client project
 - **Install as an app.** A custom "Add to phone" button uses the browser's install prompt on Android and Chrome; on iPhone it shows "Share → Add to Home Screen" instructions instead. The buttons hide themselves once the app is installed.
 - **Works on a weak connection.** A service worker keeps a copy of the page and photos, so the site still opens with poor or no signal.
 - **Services section:** city rides, airport transfer, intercity trips and night taxi.
-- **Trust section:** official commercial vehicle plate, vehicle standards and a Google reviews card (5.0 rating) with links to read and write reviews.
+- **Trust section:** vehicle standards and a Google reviews card with links to read and write reviews.
 - **FAQ** with expandable answers (arrival time, night service, how to send your location).
-- **Contact and map:** phone, WhatsApp, full address and an embedded Google Map with a "view on map" link.
+- **Contact and map:** phone, WhatsApp and an embedded Google Map with a "view on map" link.
 - **Photo slideshow** of the vehicles in the hero, with a blurred background fill so photos of any shape look good.
 
 ### SEO and discoverability
 
 - Custom domain (`emniyettaksi.com.tr`) connected to GitHub Pages over HTTPS.
-- **Schema.org `TaxiService` structured data** with name, alternate name, phone, address, coordinates, service area and 24/7 opening hours, so Google can show the business as a local result.
+- **Schema.org `TaxiService` structured data** with business details, location, service area and opening hours, so Google can show the business as a local result.
 - Title, meta description and keywords written for local searches.
 - **Open Graph tags** for a clean preview when the link is shared on WhatsApp and social media.
 - **Google Search Console** ownership verified for indexing and search monitoring.
