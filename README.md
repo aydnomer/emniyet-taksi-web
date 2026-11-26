@@ -40,6 +40,17 @@ A production website and installable mobile web app I built alone for a taxi bus
 - How service workers and caching strategies work, and how to ship updates without users getting stuck on an old version.
 - Taking a project from idea to a live product on a custom domain.
 
+## Project structure
+
+| File | Purpose |
+|---|---|
+| `index.html` | The whole site: markup, Tailwind styles and JavaScript |
+| `sw.js` | Service worker with network-first caching and cache versioning |
+| `manifest.json` | PWA manifest (name, colors, icons) |
+| `icon-192.png`, `icon-512.png`, `icon-512-maskable.png` | Home-screen icons |
+| `taksi*.jpg` | Slideshow photos |
+| `CNAME` | Custom domain for GitHub Pages |
+
 ## Run locally
 
 ```bash
